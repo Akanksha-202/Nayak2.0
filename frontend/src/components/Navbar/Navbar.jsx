@@ -37,7 +37,15 @@ function Navbar() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img  href="/"src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708188922/nayak_no_bg_logo_k05brk.png" alt="logo" className='h-12 w-16 p-1' />
+
+                  <a href="/">
+                    <img
+                      src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708188922/nayak_no_bg_logo_k05brk.png"
+                      alt="logo"
+                      className='h-12 w-16 p-1'
+                    />
+                  </a>
+                  {/* <img  href="/"src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708188922/nayak_no_bg_logo_k05brk.png" alt="logo" className='h-12 w-16 p-1' /> */}
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
