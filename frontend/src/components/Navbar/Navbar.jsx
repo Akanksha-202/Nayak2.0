@@ -5,10 +5,11 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 const navigation = [
   { name: 'Community Wall', href: '#' },
   { name: 'Analytics', href: '#' },
-  { name: 'Helpline Nos.', href: '#' },
+  { name: 'Helpline Nos.', href: '/helpline' },
   { name: 'NGOs', href: '#' },
   { name: 'AI Chatbot', href: '#' },
   { name: 'Help', href: '/help' },
+
 ]
 
 function classNames(...classes) {
@@ -36,7 +37,7 @@ function Navbar() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708188922/nayak_no_bg_logo_k05brk.png" alt="logo" className='h-12 w-16 p-1' />
+                  <img  href="/"src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708188922/nayak_no_bg_logo_k05brk.png" alt="logo" className='h-12 w-16 p-1' />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
