@@ -4,8 +4,6 @@ import Footer from '../../components/Footer/Footer';
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 
-
-
 const Help = () => {
     return (
         <>
@@ -27,11 +25,10 @@ const Help = () => {
                 </section>
 
                 <section className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4"></h2>
-                    <h2 className="text-2xl font-bold mb-4">Developer Team </h2>
-                    <div className="flex items-center mb-4">
+                    <h2 className="text-3xl font-bold mt-12 mb-12 flex justify-center">Developer Team </h2>
+                    <div className="flex items-center mb-4 justify-around">
                         <div className="flex flex-col items-center">
-                            <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-56 h-56 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
                                 <img
                                     src="https://res.cloudinary.com/damtnzoo8/image/upload/v1703313922/gqljrnnttxi46yxbze3h.jpg"
                                     alt="Profile Image"
@@ -39,15 +36,15 @@ const Help = () => {
                                 />
                             </div>
                             <div className="flex mt-4">
-                                <a href='mailto:jhaakanksha202@gmail.com' className="mr-4"><FaEnvelope /></a>
-                                <a href="https://github.com/Akanksha-202" className="mr-4"><FaGithub /></a>
-                                <a href="https://twitter.com/Akanksha_202" className="mr-4"><FaTwitter /></a>
-                                <a href="https://www.linkedin.com/in/akanksha-jha-8609a422a/"><FaLinkedin /></a>
+                                <a href='mailto:jhaakanksha202@gmail.com' className="mr-4"><FaEnvelope className='text-lg' /></a>
+                                <a href="https://github.com/Akanksha-202" className="mr-4"><FaGithub className='text-lg' /></a>
+                                <a href="https://twitter.com/Akanksha_202" className="mr-4"><FaTwitter className='text-lg' /></a>
+                                <a href="https://www.linkedin.com/in/akanksha-jha-8609a422a/"><FaLinkedin className='text-lg' /></a>
                             </div>
                         </div>
 
                         <div className="flex flex-col items-center">
-                            <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-56 h-56 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
                                 <img
                                     src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708360211/WhatsApp_Image_2024-02-19_at_21.55.57_d6df4496_re8p4e.jpg"
                                     alt="Profile Image"
@@ -55,14 +52,14 @@ const Help = () => {
                                 />
                             </div>
                             <div className="flex mt-4">
-                                <a href='mail to: nitya055btit21@igdtuw.ac.in' className="mr-4"><FaEnvelope /></a>
-                                <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub /></a>
-                                <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter /></a>
-                                <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin /></a>
+                                <a href='mail to: nitya055btit21@igdtuw.ac.in' className="mr-4"><FaEnvelope className='text-lg' /></a>
+                                <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub className='text-lg' /></a>
+                                <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter className='text-lg' /></a>
+                                <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin className='text-lg' /></a>
                             </div>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-56 h-56 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
                                 <img
                                     src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708192180/WhatsApp_Image_2023-02-13_at_21.48.53_u8oith.jpg"
                                     alt="Profile Image"
@@ -70,14 +67,14 @@ const Help = () => {
                                 />
                             </div>
                             <div className="flex mt-4">
-                                <a href='mail to:samiksha043btit21@igdtuw.ac.in' className="mr-4"><FaEnvelope /></a>
-                                <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub /></a>
-                                <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter /></a>
-                                <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin /></a>
+                                <a href='mail to:samiksha043btit21@igdtuw.ac.in' className="mr-4"><FaEnvelope className='text-lg' /></a>
+                                <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub className='text-lg' /></a>
+                                <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter className='text-lg' /></a>
+                                <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin className='text-lg' /></a>
                             </div>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-56 h-56 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
                                 <img
                                     src=""
                                     alt="Profile Image"
@@ -85,10 +82,10 @@ const Help = () => {
                                 />
                             </div>
                             <div className="flex mt-4">
-                                <a href='mail to:vashitva' className="mr-4"><FaEnvelope /></a>
-                                <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub /></a>
-                                <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter /></a>
-                                <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin /></a>
+                                <a href='mail to:vashitva' className="mr-4"><FaEnvelope className='text-lg' /></a>
+                                <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub className='text-lg' /></a>
+                                <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter className='text-lg' /></a>
+                                <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin className='text-lg' /></a>
                             </div>
                         </div>
                         
