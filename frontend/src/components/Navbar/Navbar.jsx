@@ -11,7 +11,7 @@ const provider = new GoogleAuthProvider();
 
 
 const navigation = [
-  { name: 'Community Wall', href: '#' },
+  { name: 'Community Wall', href: '/community-wall' },
   { name: 'Analytics', href: '#' },
   { name: 'Helpline Nos.', href: '/helpline' },
   { name: 'Ngo', href: '/Ngo' },
@@ -82,7 +82,7 @@ function Navbar() {
                     <img
                       src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708188922/nayak_no_bg_logo_k05brk.png"
                       alt="logo"
-                      className='h-12 w-16 p-1'
+                      className='h-12 w-12 p-1'
                     />
                   </a>
                 </div>
@@ -107,7 +107,7 @@ function Navbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                 {/*File a complaint icon*/}
-                <Link to='/file'><FaPlus className="h-8 w-8 text-white p-2" /></Link>
+                <Link to='/complaint'><FaPlus className="h-8 w-8 text-white p-2" /></Link>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
