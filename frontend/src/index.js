@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import Help from './pages/Help/Help'; 
 import Helpline from './pages/Helpline/Helpline'; 
+import Ngo from './pages/Ngo/Ngo'
 import reportWebVitals from './reportWebVitals';
 
 
@@ -16,6 +17,8 @@ root.render(
         <Route exact path="/" element={<App />} /> 
         <Route path="/help" element={<Help />} /> 
         <Route path="/helpline" element={<Helpline />} /> 
+        <Route path="/Ngo" element={<Ngo/>} /> 
+
       </Routes>
     </Router>
   </React.StrictMode>
