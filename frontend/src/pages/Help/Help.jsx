@@ -59,7 +59,7 @@ const Help = () => {
                 </section>
 
                 <section className="mb-12">
-                    <h2 className="text-3xl font-bold mt-12 mb-12 flex justify-center">Developer Team </h2>
+                    <h2 className="text-3xl font-bold mt-12 mb-12 flex justify-center" id='developer'>Developer Team </h2>
                     <div className="flex items-center mb-4 justify-around">
                         <div className="flex flex-col items-center">
                             <div className="w-56 h-56 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
