@@ -1,6 +1,14 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { FaPlus } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { app } from "../../firebase/utils";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
 
 const navigation = [
   { name: 'Community Wall', href: '#' },
@@ -17,6 +25,38 @@ function classNames(...classes) {
 }
 
 function Navbar() {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    // Clean up subscription
+    return () => unsubscribe();
+  }, []);
+
+  const handleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      setUser(user);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
+
   return (
     <Disclosure as="nav" className="bg-gray-800 mb-4">
       {({ open }) => (
@@ -45,7 +85,6 @@ function Navbar() {
                       className='h-12 w-16 p-1'
                     />
                   </a>
-                  {/* <img  href="/"src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708188922/nayak_no_bg_logo_k05brk.png" alt="logo" className='h-12 w-16 p-1' /> */}
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -66,41 +105,28 @@ function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                </button>
 
-                <svg
-                  className="h-6 w-6 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                  />
-                </svg>
+                {/*File a complaint icon*/}
+                <Link to='/file'><FaPlus className="h-8 w-8 text-white p-2" /></Link>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div >
-                    <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                      <span className="absolute -inset-1.5" />
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                    </Menu.Button>
+                    {user ? (
+                      <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">Open user menu</span>
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={user.photoURL}
+                          alt={user.displayName}
+                        />
+                      </Menu.Button>
+                    ) : (
+                      <button onClick={handleSignIn} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Sign In with Google
+                      </button>
+                    )}
                   </div>
                   <Transition
                     as={Fragment}
@@ -126,12 +152,14 @@ function Navbar() {
                         {({ active }) => (
                           <a
                             href="#"
+                            onClick={handleSignOut}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out
                           </a>
                         )}
                       </Menu.Item>
+
                     </Menu.Items>
                   </Transition>
                 </Menu>
