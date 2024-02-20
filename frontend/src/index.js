@@ -5,7 +5,10 @@ import './index.css';
 import App from './App';
 import Help from './pages/Help/Help'; 
 import Helpline from './pages/Helpline/Helpline'; 
+import Ngo from './pages/Ngo/Ngo'
 import reportWebVitals from './reportWebVitals';
+import ReachNgo from './pages/Ngo/ReachNgo';
+import Donate from './pages/Ngo/Donate';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +19,11 @@ root.render(
         <Route exact path="/" element={<App />} /> 
         <Route path="/help" element={<Help />} /> 
         <Route path="/helpline" element={<Helpline />} /> 
+        <Route path="/Ngo" element={<Ngo/>} /> 
+        <Route path="/Ngo/reachNgo" element={<ReachNgo/>} /> 
+        <Route path="/Ngo/donate" element={<Donate />} /> 
+
+
       </Routes>
     </Router>
   </React.StrictMode>

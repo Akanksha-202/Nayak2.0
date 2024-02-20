@@ -14,7 +14,7 @@ const navigation = [
   { name: 'Community Wall', href: '#' },
   { name: 'Analytics', href: '#' },
   { name: 'Helpline Nos.', href: '/helpline' },
-  { name: 'NGOs', href: '#' },
+  { name: 'Ngo', href: '/Ngo' },
   { name: 'AI Chatbot', href: '#' },
   { name: 'Help', href: '/help' },
 
