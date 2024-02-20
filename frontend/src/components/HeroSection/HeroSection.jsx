@@ -27,7 +27,8 @@ const features = [
 
 function HeroSection() {
   return (
-    <div className='mb-16'>
+    
+    <div className='mb-16 hero'>
       <div className='flex flex-col items-center'>
         <h1 className='text-7xl mt-5'>Nayak2.0</h1>
         <p className='text-1xl mt-2 mb-5'>Connecting Victims, Amplifying Solutions</p>
