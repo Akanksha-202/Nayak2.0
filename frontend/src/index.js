@@ -9,6 +9,8 @@ import Ngo from './pages/Ngo/Ngo'
 import reportWebVitals from './reportWebVitals';
 import ReachNgo from './pages/Ngo/ReachNgo';
 import Donate from './pages/Ngo/Donate';
+import { CommunityWall } from './pages/CommunityWall/CommunityWall';
+import Complaint from './pages/Complaint/Complaint';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,8 +24,8 @@ root.render(
         <Route path="/Ngo" element={<Ngo/>} /> 
         <Route path="/Ngo/reachNgo" element={<ReachNgo/>} /> 
         <Route path="/Ngo/donate" element={<Donate />} /> 
-
-
+        <Route path='/community-wall' element={<CommunityWall />} />
+        <Route path='/complaint' element={<Complaint />} />
       </Routes>
     </Router>
   </React.StrictMode>
