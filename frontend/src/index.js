@@ -12,7 +12,6 @@ import Donate from './pages/Ngo/Donate';
 import { CommunityWall } from './pages/CommunityWall/CommunityWall';
 import Complaint from './pages/Complaint/Complaint';
 import Profile from './pages/Profile/Profile';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
