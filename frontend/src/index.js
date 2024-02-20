@@ -11,6 +11,7 @@ import ReachNgo from './pages/Ngo/ReachNgo';
 import Donate from './pages/Ngo/Donate';
 import { CommunityWall } from './pages/CommunityWall/CommunityWall';
 import Complaint from './pages/Complaint/Complaint';
+import Profile from './pages/Profile/Profile';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,6 +27,8 @@ root.render(
         <Route path="/Ngo/donate" element={<Donate />} /> 
         <Route path='/community-wall' element={<CommunityWall />} />
         <Route path='/complaint' element={<Complaint />} />
+        <Route path='/profile' element={<Profile />} />
+
       </Routes>
     </Router>
   </React.StrictMode>
