@@ -15,7 +15,7 @@ function Complaint() {
     time: '',
     category: '',
     description: '',
-    attachments: [], // Now we store file URLs instead of the FileList object
+    // attachments: [], // Now we store file URLs instead of the FileList object
   });
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -48,15 +48,15 @@ function Complaint() {
           const { displayName, email } = user;
   
           // Upload files to Firebase Storage
-          const fileURLs = await Promise.all(formData.attachments.map(async (file) => {
-            const storageRef = ref(storage, 'complaints/' + file.name);
-            const snapshot = await uploadBytes(storageRef, file);
-            const downloadURL = await getDownloadURL(snapshot.ref);
-            return downloadURL;
-          }));
+          // const fileURLs = await Promise.all(formData.attachments.map(async (file) => {
+          //   const storageRef = ref(storage, 'complaints/' + file.name);
+          //   const snapshot = await uploadBytes(storageRef, file);
+          //   const downloadURL = await getDownloadURL(snapshot.ref);
+          //   return downloadURL;
+          // }));
   
           // Add the user's username and email to the formData
-          const formDataWithUser = { ...formData, username: displayName, userEmail: email, attachments: fileURLs };
+          const formDataWithUser = { ...formData, username: displayName, userEmail: email };
   
           // Add the formData to Firestore
           const docRef = await addDoc(collection(db, 'cases'), formDataWithUser);
@@ -70,7 +70,7 @@ function Complaint() {
             category: '',
             title:'',
             description: '',
-            attachments: [],
+            // attachments: [],
           });
           setSuccessMessage('Complaint submitted successfully!');
           setError('');
