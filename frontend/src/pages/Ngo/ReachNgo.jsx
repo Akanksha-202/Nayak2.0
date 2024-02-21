@@ -10,7 +10,7 @@ const ReachNgo = () => {
       name: 'Water for All',
       category: 'Healthcare',
       location: 'India',
-      imageUrl: 'https://www.pexels.com/photo/teach-dice-ornament-on-table-301926/',
+      imageUrl: 'https://images.unsplash.com/photo-1613399421095-41f5c68e9f8c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2F0ZXIlMjBuZ29zfGVufDB8fDB8fHww',
       websiteUrl: 'https://www.example.com/ngo1',
     },
     {
@@ -18,7 +18,7 @@ const ReachNgo = () => {
       name: 'Educate the Future',
       category: 'Education',
       location: 'India',
-      imageUrl: 'https://via.placeholder.com/150',
+      imageUrl: 'https://plus.unsplash.com/premium_photo-1682092618317-9b50d60e6e0d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8RWR1Y2F0aW9uJTIwbmdvc3xlbnwwfHwwfHx8MA%3D%3D',
       websiteUrl: 'https://www.example.com/ngo2',
     },
     {
@@ -26,7 +26,7 @@ const ReachNgo = () => {
         name: 'Girl Child Education',
         category: 'Education',
         location: 'USA',
-        imageUrl: 'https://via.placeholder.com/150',
+        imageUrl: 'https://images.unsplash.com/photo-1467307983825-619715426c70?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z2lybCUyMGNoaWxkJTIwZWR1Y2F0aW9ufGVufDB8fDB8fHww',
         websiteUrl: 'https://www.example.com/ngo2',
       },
       {
@@ -34,7 +34,7 @@ const ReachNgo = () => {
         name: 'AIDS Awareness',
         category: 'Healthcare',
         location: 'USA',
-        imageUrl: 'https://via.placeholder.com/150',
+        imageUrl: 'https://images.unsplash.com/photo-1605102786340-5d7929a3f7c3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YWlkc3xlbnwwfHwwfHx8MA%3D%3D',
         websiteUrl: 'https://www.example.com/ngo2',
       },
       {
@@ -42,28 +42,28 @@ const ReachNgo = () => {
         name: 'Animal Shelter',
         category: 'Animal Welfare',
         location: 'United Kingdom',
-        imageUrl: 'https://via.placeholder.com/150',
+        imageUrl: 'https://plus.unsplash.com/premium_photo-1663127644755-edefeedc2d49?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW5pbWFsJTIwc2hlbHRlcnxlbnwwfHwwfHx8MA%3D%3D',
         websiteUrl: 'https://www.example.com/ngo2',
       },{
         id: 6,
         name: 'Worker Rights',
         category: 'Awareness',
         location: 'India',
-        imageUrl: 'https://via.placeholder.com/150',
+        imageUrl: 'https://plus.unsplash.com/premium_photo-1683880731561-f0cceb0ad405?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         websiteUrl: 'https://www.example.com/ngo2',
       },{
         id: 7,
         name: 'Grant for All',
         category: 'Education',
         location: 'USA',
-        imageUrl: 'https://via.placeholder.com/150',
+        imageUrl: 'https://images.unsplash.com/photo-1594841343391-97ac1b9a950e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVmdWdlZXxlbnwwfHwwfHx8MA%3D%3D0',
         websiteUrl: 'https://www.example.com/ngo2',
       },{
         id: 8,
         name: 'Rescue Rehab',
         category: 'Animal Welfare',
         location: 'India',
-        imageUrl: 'https://via.placeholder.com/150',
+        imageUrl: 'https://images.unsplash.com/photo-1594004844563-536a03a6e532?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW5pbWFsJTIwc2hlbHRlcnxlbnwwfHwwfHx8MA%3D%3D',
         websiteUrl: 'https://www.example.com/ngo2',
       },
   ];
