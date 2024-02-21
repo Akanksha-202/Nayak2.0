@@ -7,10 +7,11 @@ const Ngo = () => {
   return (
     <>
     <Navbar />
-    <div className="flex justify-center items-center h-screen">
-      <div className="max-w-xl grid grid-cols-2 gap-8">
+    <div className="flex justify-center items-center h-screen w-screen">
+      <div className="w-screen p-10 bg-black grid grid-cols-4 gap-8">
+        
         {/* Option 1: Current Programs */}
-        <div className="bg-blue-400 rounded-lg p-6 cursor-pointer hover:bg-blue-500 transition duration-300">
+        <div className="bg-blue-400 rounded-lg p-3 w-30 cursor-pointer hover:bg-blue-500 transition duration-300">
           <h2 className="text-2xl font-bold mb-4">Current Programs</h2>
           <p className="text-lg">Explore our ongoing projects and initiatives.</p>
         </div>
@@ -27,6 +28,13 @@ const Ngo = () => {
         <div className="bg-yellow-400 rounded-lg p-6 cursor-pointer hover:bg-yellow-500 transition duration-300">
           <h2 className="text-2xl font-bold mb-4">Reach NGO</h2>
           <p className="text-lg">Contact us or find out how you can get involved.</p>
+        </div>
+        </Link>
+        {/* Option 3: Petition your Cause */}
+        <Link to= '/Ngo/reachNgo'>
+        <div className="bg-red-400 rounded-lg p-6 cursor-pointer hover:bg-red-500 transition duration-300">
+          <h2 className="text-2xl font-bold mb-4">Petition your Cause</h2>
+          <p className="text-lg">Curate petitions to help bring your cause to light.</p>
         </div>
         </Link>
       </div>
