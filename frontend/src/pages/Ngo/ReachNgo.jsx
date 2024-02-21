@@ -7,101 +7,65 @@ const ReachNgo = () => {
   const ngos = [
     {
       id: 1,
-      name: 'NGO Name 1',
+      name: 'Water for All',
       category: 'Healthcare',
-      location: 'Location 1',
-      imageUrl: 'https://via.placeholder.com/150',
+      location: 'India',
+      imageUrl: 'https://www.pexels.com/photo/teach-dice-ornament-on-table-301926/',
       websiteUrl: 'https://www.example.com/ngo1',
     },
     {
       id: 2,
-      name: 'NGO Name 2',
+      name: 'Educate the Future',
       category: 'Education',
-      location: 'Location 2',
+      location: 'India',
       imageUrl: 'https://via.placeholder.com/150',
       websiteUrl: 'https://www.example.com/ngo2',
     },
     {
-        id: 2,
-        name: 'NGO Name 2',
+        id: 3,
+        name: 'Girl Child Education',
         category: 'Education',
-        location: 'Location 2',
+        location: 'USA',
         imageUrl: 'https://via.placeholder.com/150',
         websiteUrl: 'https://www.example.com/ngo2',
       },
       {
-        id: 2,
-        name: 'NGO Name 2',
-        category: 'Education',
-        location: 'Location 2',
+        id: 4,
+        name: 'AIDS Awareness',
+        category: 'Healthcare',
+        location: 'USA',
         imageUrl: 'https://via.placeholder.com/150',
         websiteUrl: 'https://www.example.com/ngo2',
       },
       {
-        id: 2,
-        name: 'NGO Name 2',
-        category: 'Education',
-        location: 'Location 2',
+        id: 5,
+        name: 'Animal Shelter',
+        category: 'Animal Welfare',
+        location: 'United Kingdom',
         imageUrl: 'https://via.placeholder.com/150',
         websiteUrl: 'https://www.example.com/ngo2',
       },{
-        id: 2,
-        name: 'NGO Name 2',
-        category: 'Education',
-        location: 'Location 2',
+        id: 6,
+        name: 'Worker Rights',
+        category: 'Awareness',
+        location: 'India',
         imageUrl: 'https://via.placeholder.com/150',
         websiteUrl: 'https://www.example.com/ngo2',
       },{
-        id: 2,
-        name: 'NGO Name 2',
+        id: 7,
+        name: 'Grant for All',
         category: 'Education',
-        location: 'Location 2',
+        location: 'USA',
         imageUrl: 'https://via.placeholder.com/150',
         websiteUrl: 'https://www.example.com/ngo2',
       },{
-        id: 2,
-        name: 'NGO Name 2',
-        category: 'Education',
-        location: 'Location 2',
-        imageUrl: 'https://via.placeholder.com/150',
-        websiteUrl: 'https://www.example.com/ngo2',
-      },{
-        id: 2,
-        name: 'NGO Name 2',
-        category: 'Education',
-        location: 'Location 2',
-        imageUrl: 'https://via.placeholder.com/150',
-        websiteUrl: 'https://www.example.com/ngo2',
-      },{
-        id: 2,
-        name: 'NGO Name 2',
-        category: 'Education',
-        location: 'Location 2',
-        imageUrl: 'https://via.placeholder.com/150',
-        websiteUrl: 'https://www.example.com/ngo2',
-      },{
-        id: 2,
-        name: 'NGO Name 2',
-        category: 'Education',
-        location: 'Location 2',
-        imageUrl: 'https://via.placeholder.com/150',
-        websiteUrl: 'https://www.example.com/ngo2',
-      },{
-        id: 2,
-        name: 'NGO Name 2',
-        category: 'Education',
-        location: 'Location 2',
+        id: 8,
+        name: 'Rescue Rehab',
+        category: 'Animal Welfare',
+        location: 'India',
         imageUrl: 'https://via.placeholder.com/150',
         websiteUrl: 'https://www.example.com/ngo2',
       },
-
-
-
-
-      
-
-
-    // Add more NGO data as needed
   ];
 
   // State for filters
@@ -143,11 +107,8 @@ const ReachNgo = () => {
             <option value="">All Categories</option>
             <option value="Healthcare">Healthcare</option>
             <option value="Education">Education</option>
-            <option value="Education">Education</option>
-            <option value="Education">Education</option>
-            <option value="Education">Education</option>
-            <option value="Education">Education</option>
-            <option value="Education">Education</option>
+            <option value="Animal Welfare">Animal Welfare</option>
+            <option value="Awareness">Awareness</option>
             {/* Add more category options here */}
           </select>
         </div>
@@ -157,12 +118,9 @@ const ReachNgo = () => {
           <label htmlFor="location" className="block text-gray-700 font-bold mb-2">Location:</label>
           <select id="location" className="block w-full bg-white border border-gray-300 rounded p-2" onChange={handleLocationChange} value={locationFilter}>
             <option value="">All Locations</option>
-            <option value="Location 1">Location 1</option>
-            <option value="Location 2">Location 2</option>
-            <option value="Location 2">Location 2</option>
-            <option value="Location 2">Location 2</option>
-            <option value="Location 2">Location 2</option>
-            <option value="Location 2">Location 2</option>
+            <option value="USA">USA</option>
+            <option value="India">India</option>
+            <option value="United Kingdom">UK</option>
             {/* Add more location options here */}
           </select>
         </div>
