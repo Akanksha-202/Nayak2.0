@@ -90,7 +90,7 @@ function ComplaintCard() {
             <p>Location: {complaint.location}</p>
             <p>Time: {complaint.time}</p>
             <div>
-              {complaint.attachments.map((attachment, index) => (
+              {/* {complaint.attachments.map((attachment, index) => (
                 <div key={index} className="mb-2">
                   {attachment.endsWith('.pdf') ? (
                     <a href={attachment} target="_blank" rel="noopener noreferrer">
@@ -100,7 +100,7 @@ function ComplaintCard() {
                     <img src={attachment} alt={`Attachment ${index + 1}`} className="w-full" />
                   )}
                 </div>
-              ))}
+              ))} */}
             </div>
             <button className="flex items-center text-blue-500 focus:outline-none mt-2" onClick={closeModal}>
               <FaArrowLeft />GoBack
