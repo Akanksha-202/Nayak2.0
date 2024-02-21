@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import necessary components from react-router-dom
 import './index.css';
@@ -13,27 +13,48 @@ import { CommunityWall } from './pages/CommunityWall/CommunityWall';
 import Complaint from './pages/Complaint/Complaint';
 import Profile from './pages/Profile/Profile';
 import Case from './pages/Case/Case';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
+const auth = getAuth();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <Router> 
-      <Routes> 
-        <Route exact path="/" element={<App />} /> 
-        <Route path="/help" element={<Help />} /> 
-        <Route path="/helpline" element={<Helpline />} /> 
-        <Route path="/Ngo" element={<Ngo/>} /> 
-        <Route path="/Ngo/reachNgo" element={<ReachNgo/>} /> 
-        <Route path="/Ngo/donate" element={<Donate />} /> 
-        <Route path='/community-wall' element={<CommunityWall />} />
-        <Route path="/community-wall/:title" element={<Case />} />
-        <Route path='/complaint' element={<Complaint />} />
-        <Route path='/profile' element={<Profile />} />
 
-      </Routes>
-    </Router>
-  </React.StrictMode>
-);
+const RootComponent = () => {
+  const [loggedInUsername, setLoggedInUsername] = useState(null);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in.
+        setLoggedInUsername(user.displayName);
+      } else {
+        alert('First SignIn using Google ')
+        setLoggedInUsername(null);
+      }
+    });
+
+    // Clean up the listener
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <React.StrictMode>
+      <Router> 
+        <Routes> 
+          <Route exact path="/" element={<App />} /> 
+          <Route path="/help" element={<Help />} /> 
+          <Route path="/helpline" element={<Helpline />} /> 
+          <Route path="/Ngo" element={<Ngo/>} /> 
+          <Route path="/Ngo/reachNgo" element={<ReachNgo/>} /> 
+          <Route path="/Ngo/donate" element={<Donate />} /> 
+          <Route path='/community-wall' element={<CommunityWall />} />
+          <Route path="/community-wall/:title" element={<Case />} />
+          {loggedInUsername && <Route path={`/profile/${loggedInUsername}`} element={<Profile />} />}
+        </Routes>
+      </Router>
+    </React.StrictMode>
+  );
+};
+
+root.render(<RootComponent />);
 reportWebVitals();
