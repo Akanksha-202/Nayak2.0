@@ -11,84 +11,98 @@ const Donate = () => {
       name: '1. Paws for Hope',
       location: 'United Kingdom',
       category: 'Animal Welfare',
+      image:'https://plus.unsplash.com/premium_photo-1663127644755-edefeedc2d49?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW5pbWFsJTIwc2hlbHRlcnxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       id: 2,
       name: '2. Education for All',
       location: 'India',
       category: 'Child Welfare',
+      image:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWR1Y2F0aW9uJTIwbmdvfGVufDB8fDB8fHww'
     },
     {
       id: 3,
       name: '3. Empower Women Initiative',
       location: 'USA',
       category: 'Women Empowerment',
+      image:'https://images.unsplash.com/photo-1467307983825-619715426c70?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z2lybCUyMGNoaWxkJTIwZWR1Y2F0aW9ufGVufDB8fDB8fHww'
     },
     {
       id: 4,
       name: "4. Workers' Rights Alliance",
       location: 'India',
       category: 'Worker Rights',
+      image:'https://images.unsplash.com/photo-1461280360983-bd93eaa5051b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eW91dGglMjBpbXBvd2VybWVudHxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       id: 5,
       name: '5. Green Earth Society',
       location: 'United Kingdom',
       category: 'Environment Protection',
+      image:'https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       id: 6,
       name: '6. Hope for Children Charity',
       location: 'India',
       category: 'Child Welfare',
+      image:'https://plus.unsplash.com/premium_photo-1682092618317-9b50d60e6e0d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8RWR1Y2F0aW9uJTIwbmdvc3xlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       id: 7,
       name: '7. Healthcare for All',
       location: 'India',
       category: 'Healthcare Support',
+      image:'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fHww'
     },
     {
       id: 8,
       name: '8. Refugee Assistance Project',
       location: 'USA',
       category: 'Refugee Support',
+      image:'https://images.unsplash.com/photo-1594841343391-97ac1b9a950e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVmdWdlZXxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       id: 9,
       name: '9. Elderly Care Foundation',
       location: 'Japan',
       category: 'Elderly Support',
+      image:'https://media.istockphoto.com/id/1392762008/photo/laughing-senior-couple-while-talking-with-each-other-at-park-concept-of-friendship-enjoyment.webp?b=1&s=170667a&w=0&k=20&c=47If8CH_1Q_8opZAjhjxGuvHqn3Gfzu3ldQXWYjv4SQ='
     },
     {
       id: 10,
       name: '10. Clean Water Initiative',
       location: 'Bangladesh',
       category: 'Environment Protection',
+      image:'https://images.unsplash.com/photo-1613399421095-41f5c68e9f8c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2F0ZXIlMjBuZ29zfGVufDB8fDB8fHww'
     },
     {
       id: 11,
       name: '11. Youth Empowerment Network',
       location: 'Africa',
       category: 'Youth Empowerment',
+      image:'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHlvdXRofGVufDB8fDB8fHww'
     },
     {
       id: 12,
       name: '12. Humanitarian Relief Organization',
       location: 'USA',
       category: 'Humanitarian Relief',
+      image:'https://images.unsplash.com/photo-1461280360983-bd93eaa5051b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eW91dGglMjBpbXBvd2VybWVudHxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       id: 13,
       name: '13. Rainforest Preservation Society',
       location: 'India',
       category: 'Environment Protection',
+      image:'https://images.unsplash.com/photo-1560851691-ebb64b584d3d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmFpbmZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       id: 14,
       name: '14. Equality Now Foundation',
       location: 'USA',
       category: 'Human Rights',
+      image:'https://images.unsplash.com/photo-1616581051018-2edcf6678e55?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fEh1bWFuJTIwcmlnaHRzfGVufDB8fDB8fHww'
     },
   ];
 
@@ -217,9 +231,7 @@ const Donate = () => {
                   buttonType="donate"
               />
           </div>
-      
-          {/* NGO Image */}
-          <img src="https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-working-on-laptops-FldkziOS26w" />
+          <img src={ngo.image} />
       </div>
       
         ))}
