@@ -7,11 +7,12 @@ const Ngo = () => {
   return (
     <>
     <Navbar />
-    <div className="flex justify-center items-center h-screen w-screen">
-      <div className="w-screen p-10 bg-black grid grid-cols-4 gap-8">
+    <div className="justify-center items-center text-5xl text-center mt-20 " > NGO Listing - we help bridge the gap</div>
+    <div className="flex justify-center items-center px-20 mb-20 w-screen ">
+      <div className="w-screen p-10 grid grid-cols-2 gap-8">
         
         {/* Option 1: Current Programs */}
-        <div className="bg-blue-400 rounded-lg p-3 w-30 cursor-pointer hover:bg-blue-500 transition duration-300">
+        <div className="bg-blue-400 rounded-lg p-6 cursor-pointer hover:bg-blue-500 transition duration-300">
           <h2 className="text-2xl font-bold mb-4">Current Programs</h2>
           <p className="text-lg">Explore our ongoing projects and initiatives.</p>
         </div>
