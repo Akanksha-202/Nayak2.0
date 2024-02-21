@@ -62,10 +62,7 @@ const Profile = ({ avatarUrl, username }) => {
         {activeSection === 'reachOut' && <ReachOut />}
       </div>
       <div className="flex justify-between mb-4">
-        {/* <div>
-          Profile Photo: {isProfilePublic ? 'Public' : 'Private'}{' '}
-          <button onClick={toggleProfilePrivacy}>{isProfilePublic ? 'Make Private' : 'Make Public'}</button>
-        </div> */}
+        
         <div>
           Sort By:{' '}
           <select value={sortBy} onChange={(e) => handleSortByChange(e.target.value)}>

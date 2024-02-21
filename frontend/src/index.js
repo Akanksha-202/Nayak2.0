@@ -12,6 +12,7 @@ import Donate from './pages/Ngo/Donate';
 import { CommunityWall } from './pages/CommunityWall/CommunityWall';
 import Complaint from './pages/Complaint/Complaint';
 import Profile from './pages/Profile/Profile';
+import Case from './pages/Case/Case';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,6 +27,7 @@ root.render(
         <Route path="/Ngo/reachNgo" element={<ReachNgo/>} /> 
         <Route path="/Ngo/donate" element={<Donate />} /> 
         <Route path='/community-wall' element={<CommunityWall />} />
+        <Route path="/community-wall/:title" element={<Case />} />
         <Route path='/complaint' element={<Complaint />} />
         <Route path='/profile' element={<Profile />} />
 

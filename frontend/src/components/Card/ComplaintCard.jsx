@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/utils';
 import { FaHeart, FaShare, FaEye, FaFilePdf, FaArrowLeft } from 'react-icons/fa'; // Import icons
 import { MdContactPhone } from 'react-icons/md'; // Import contact icon
 import Modal from 'react-modal';
 import { Document, Page, pdfjs } from 'react-pdf'; // Import react-pdf components
-
 
 function ComplaintCard() {
   const [complaints, setComplaints] = useState([]);
@@ -35,24 +35,33 @@ function ComplaintCard() {
     setSelectedComplaint(null);
   };
 
-  const handleShare = async () => {
+  const handleShare = async (complaintName) => {
     try {
-      if (navigator.share) {
-        const complaintToShare = selectedComplaint || complaints[0]; // Assuming sharing the first complaint if none selected
-        await navigator.share({
-          title: complaintToShare.title,
-          text: complaintToShare.description,
-          url: window.location.href
-        });
-      } else {
-        console.log('Web Share API not supported');
-        // Fallback for unsupported browsers
-        // You can implement custom share functionality or display a message
-      }
+        if (navigator.share) {
+            const complaintToShare = complaints.find(complaint => complaint.title === complaintName);
+            if (!complaintToShare) {
+                console.error('No complaint found for sharing');
+                return;
+            }
+            const complaintTitleWithSpaces = encodeURIComponent(complaintToShare.title);
+            const sharedUrl = `${window.location.href}/${complaintTitleWithSpaces}`;
+            await navigator.share({
+                title: complaintToShare.title,
+                text: complaintToShare.description,
+                url: sharedUrl
+            });
+        } else {
+            console.log('Web Share API not supported');
+            // Fallback for unsupported browsers
+            // You can implement custom share functionality or display a message
+        }
     } catch (error) {
-      console.error('Error sharing:', error);
+        console.error('Error sharing:', error);
     }
-  };
+};
+
+
+
 
   return (
     <div className="flex flex-wrap">
@@ -63,7 +72,7 @@ function ComplaintCard() {
               <h2 className="text-xl font-semibold text-center mb-2">{complaint.title}</h2>
               <div className="flex items-center justify-end space-x-2">
                 <FaHeart className="text-red-500 cursor-pointer" />
-                <FaShare className="text-blue-500 cursor-pointer" onClick={handleShare} />
+                <FaShare className="text-blue-500 cursor-pointer" onClick={() => handleShare(complaint.title)} />
                 <FaEye className="text-green-500" />
                 <span>{complaint.views}</span>
               </div>
@@ -71,12 +80,12 @@ function ComplaintCard() {
                 {complaint.description.length > 100 && !selectedComplaint ? (
                   <>
                     {complaint.description.slice(0, 100)}
-                    <button
+                    <Link
                       className="text-blue-500 hover:underline focus:outline-none ml-2"
-                      onClick={() => openModal(complaint)}
+                      to={`/community-wall/${complaint.title}`}
                     >
                       Read More
-                    </button>
+                    </Link>
                   </>
                 ) : (
                   complaint.description
@@ -84,28 +93,7 @@ function ComplaintCard() {
               </p>
             </div>
           </div>
-          <Modal isOpen={selectedComplaint === complaint} onRequestClose={closeModal}>
-            <h2 className="text-xl font-semibold">{complaint.category}</h2>
-            <p>{complaint.description}</p>
-            <p>Location: {complaint.location}</p>
-            <p>Time: {complaint.time}</p>
-            <div>
-              {/* {complaint.attachments.map((attachment, index) => (
-                <div key={index} className="mb-2">
-                  {attachment.endsWith('.pdf') ? (
-                    <a href={attachment} target="_blank" rel="noopener noreferrer">
-                      <FaFilePdf className="mr-2" /> PDF Attachment
-                    </a>
-                  ) : (
-                    <img src={attachment} alt={`Attachment ${index + 1}`} className="w-full" />
-                  )}
-                </div>
-              ))} */}
-            </div>
-            <button className="flex items-center text-blue-500 focus:outline-none mt-2" onClick={closeModal}>
-              <FaArrowLeft />GoBack
-            </button>
-          </Modal>
+          
         </div>
       ))}
     </div>
