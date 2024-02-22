@@ -2,9 +2,10 @@ import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaPlus } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { app } from "../../firebase/utils";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
@@ -51,6 +52,7 @@ function Navbar() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
+      navigation.navigate('/');
     } catch (error) {
       console.error("Error signing out:", error);
     }

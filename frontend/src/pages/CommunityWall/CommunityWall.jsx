@@ -5,7 +5,7 @@ import ComplaintCard from '../../components/Card/ComplaintCard';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/utils';
 
-const CommunityWall = () => {
+const CommunityWall = ({ userEmail }) => {
   const [complaints, setComplaints] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const CommunityWall = () => {
     <div className='bg-[#f3f6f2]'>
       <Navbar />
       <div className='m-3'>
-        <ComplaintCard complaints={complaints} />
+        <ComplaintCard complaints={complaints} userEmail={userEmail} />
       </div>
       <Footer />
     </div>
@@ -34,3 +34,4 @@ const CommunityWall = () => {
 }
 
 export default CommunityWall;
+
