@@ -15,7 +15,7 @@ const navigation = [
   { name: 'Analytics', href: '#' },
   { name: 'Helpline Nos.', href: '/helpline' },
   { name: 'Ngo', href: '/Ngo' },
-  { name: 'AI Chatbot', href: '#' },
+  { name: 'AI Chatbot', href: 'https://chatbotaii.streamlit.app/' },
   { name: 'Help', href: '/help' },
 
 ]
