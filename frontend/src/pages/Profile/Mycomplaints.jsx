@@ -25,7 +25,7 @@ const MyComplaints = ({ loggedInUserEmail }) => {
     <div className="bg-gray-100 p-4 mb-4">
       <h3 className="text-lg font-semibold mb-2">My Complaints</h3>
       {userComplaints.length > 0 ? (
-        <ComplaintCard complaints={userComplaints} />
+        <ComplaintCard complaints={userComplaints} userEmail={loggedInUserEmail} />
       ) : (
         <p>No complaints found.</p>
       )}

@@ -1,14 +1,48 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHeart, FaShare, FaEye, FaBookmark } from 'react-icons/fa';
+import { FaShare,  FaBookmark,  FaTrash } from 'react-icons/fa';
 import ContactPopup from '../ContactPopup/ContactPopup';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../../firebase/utils';
 
-function ComplaintCard({ complaints }) {
+function ComplaintCard({ complaints, userEmail }) {
   const [showContactPopup, setShowContactPopup] = useState(false); // State to manage modal visibility
 
   const handleShare = async (complaintName) => {
-    // Your existing handleShare function remains unchanged
+    try {
+      if (navigator.share) {
+        const complaintToShare = complaints.find(complaint => complaint.title === complaintName);
+        if (!complaintToShare) {
+          console.error('No complaint found for sharing');
+          return;
+        }
+        const complaintTitleWithSpaces = encodeURIComponent(complaintToShare.title);
+        const sharedUrl = `${window.location.href}/${complaintTitleWithSpaces}`;
+        await navigator.share({
+          title: complaintToShare.title,
+          text: complaintToShare.description,
+          url: sharedUrl
+        });
+      } else {
+        console.log('Web Share API not supported');
+        
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
   };
+
+  const handleDelete = async (complaintId) => {
+    try {
+      await deleteDoc(doc(db, 'cases', complaintId));
+      window.location.reload();
+      console.log('Complaint deleted successfully');
+    } catch (error) {
+      console.error('Error deleting complaint:', error);
+    }
+  };
+
+  
 
   return (
     <div className="flex flex-wrap">
@@ -18,12 +52,13 @@ function ComplaintCard({ complaints }) {
             <div>
               <h2 className="text-xl font-semibold text-center mb-2">{complaint.title}</h2>
               <div className="flex items-center justify-end space-x-2">
-                <FaBookmark />
+               
+                {complaint.userEmail !== userEmail && (<FaBookmark className='cursor-pointer'/>)}
                 <FaShare
                   className="text-blue-500 cursor-pointer"
                   onClick={() => handleShare(complaint.title)}
                 />
-                <FaEye className="text-green-500" />
+                {complaint.userEmail === userEmail && (<FaTrash className="text-red-500 cursor-pointer" onClick={()=>handleDelete(complaint.id)}/>)}
                 <span>{complaint.views}</span>
               </div>
               <p className="text-gray-600 mt-4">
@@ -43,7 +78,7 @@ function ComplaintCard({ complaints }) {
               </p>
             </div>
             {/* Button to open the ContactPopup modal */}
-            
+
             <button
               onClick={() => setShowContactPopup(true)}
               className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2"
@@ -53,7 +88,6 @@ function ComplaintCard({ complaints }) {
           </div>
         </div>
       ))}
-      {/* Render the ContactPopup modal component if showContactPopup state is true */}
       {showContactPopup && <ContactPopup onClose={() => setShowContactPopup(false)} />}
     </div>
   );

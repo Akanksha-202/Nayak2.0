@@ -52,7 +52,7 @@ const RootComponent = () => {
           <Route path="/complaint" element={<Complaint />} /> 
           <Route path="/Ngo/reachNgo" element={<ReachNgo/>} /> 
           <Route path="/Ngo/donate" element={<Donate />} /> 
-          <Route path='/community-wall' element={<CommunityWall />} />
+          <Route path='/community-wall' element={<CommunityWall userEmail={loggedInEmail} />} />
           <Route path="/community-wall/:title" element={<Case />} />
           {loggedInUsername && <Route path={`/profile/${loggedInUsername}`} element={<Profile avatarUrl={loggedInAvatar} username={loggedInUsername} email={loggedInEmail} />} />}
         </Routes>
