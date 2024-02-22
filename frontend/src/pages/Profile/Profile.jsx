@@ -1,67 +1,64 @@
-// Profile.jsx
-
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import ProfileHeader from './ProfileHeader';
 import Complaints from './Mycomplaints';
 import SavedPosts from './SavedPosts';
 import ReachOut from './ReachOut';
-import { getAuth } from 'firebase/auth'; // Import getAuth from firebase/auth
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 
-const auth = getAuth(); // Get the authentication instance
-
-const Profile = ({ avatarUrl, username }) => {
+const Profile = ({ avatarUrl, username, email }) => {
   const [activeSection, setActiveSection] = useState('complaints');
-  const [isProfilePublic, setIsProfilePublic] = useState(true);
-  const [numSavedPosts, setNumSavedPosts] = useState(0);
-  const [numMyPosts, setNumMyPosts] = useState(0);
-  const [reachOutRequests, setReachOutRequests] = useState([]);
   const [sortBy, setSortBy] = useState('latest');
-  const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
+
 
   const handleSectionChange = (section) => {
     setActiveSection(section);
-  };
-
-  const toggleProfilePrivacy = () => {
-    setIsProfilePublic((prev) => !prev);
   };
 
   const handleSortByChange = (value) => {
     setSortBy(value);
   };
 
-  const fetchLoggedInUserEmail = () => {
-    const user = auth.currentUser;
-    if (user) {
-      const userEmail = user.email;
-      setLoggedInUserEmail(userEmail);
-    } else {
-      console.error('No user logged in');
-    }
-  };
-
-  useEffect(() => {
-    fetchLoggedInUserEmail();
-  }, []); // Call fetchLoggedInUserEmail only once when the component mounts
-
   return (
     <>
       <Navbar />
       <div className="container mx-auto px-4">
-        <ProfileHeader avatarUrl={avatarUrl} username={username} />
+        <ProfileHeader avatarUrl= {avatarUrl} username={username} />
         <div className="mt-8 mb-4">
           <div className="flex justify-center">
-            {/* Buttons for different sections */}
+            <button
+              className={`mx-2 px-4 py-2 ${activeSection === 'complaints' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              onClick={() => handleSectionChange('complaints')}
+            >
+              My Complaints
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 ${activeSection === 'savedPosts' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              onClick={() => handleSectionChange('savedPosts')}
+            >
+              Saved Posts ()
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 ${activeSection === 'reachOut' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              onClick={() => handleSectionChange('reachOut')}
+            >
+              Reach Out ({})
+            </button>
           </div>
         </div>
         <div className="mb-4 mt-4">
-          {activeSection === 'complaints' && <Complaints loggedInUserEmail={loggedInUserEmail} />} {/* Pass loggedInUserEmail to Mycomplaints */}
-          {/* Render other sections based on activeSection */}
+          {activeSection === 'complaints' && <Complaints loggedInUserEmail={email} />}
+          {activeSection === 'savedPosts' && <SavedPosts />}
+          {activeSection === 'reachOut' && <ReachOut />}
         </div>
         <div className="flex justify-between mb-4">
-          {/* Sort by dropdown */}
+          <div>
+            Sort By:{' '}
+            <select value={sortBy} onChange={(e) => handleSortByChange(e.target.value)}>
+              <option value="latest">Latest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
         </div>
       </div>
       <Footer />
