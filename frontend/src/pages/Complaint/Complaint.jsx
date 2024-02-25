@@ -90,7 +90,8 @@ function Complaint() {
   return (
     <>
       <Navbar />
-      <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded-lg">
+      {/* <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded-lg"> */}
+      <div className="max-w-md mx-auto mt-8 mb-8 p-4 bg-white shadow-md rounded-lg">
         <h2 className="text-xl font-semibold mb-4">Post a Complaint</h2>
         {error && <p className="text-red-500 mb-2">{error}</p>}
         {successMessage && <p className="text-green-500 mb-2">{successMessage}</p>}
