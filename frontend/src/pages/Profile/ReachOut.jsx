@@ -30,6 +30,7 @@ const ReachOut = ({ loggedInUserEmail }) => {
           from={message.from}
           contactEmail={message.emailContact}
           message={message.message}
+          title={message.complaintTitle}
         />
       ))}
     </div>
