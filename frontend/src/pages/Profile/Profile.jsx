@@ -36,22 +36,22 @@ const Profile = ({ avatarUrl, username, email }) => {
               className={`mx-2 px-4 py-2 ${activeSection === 'savedPosts' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
               onClick={() => handleSectionChange('savedPosts')}
             >
-              Saved Posts ()
+              Saved Posts
             </button>
             <button
               className={`mx-2 px-4 py-2 ${activeSection === 'reachOut' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
               onClick={() => handleSectionChange('reachOut')}
             >
-              Reach Out ({})
+              Reach Out 
             </button>
           </div>
         </div>
         <div className="mb-4 mt-4">
           {activeSection === 'complaints' && <Complaints loggedInUserEmail={email} />}
-          {activeSection === 'savedPosts' && <SavedPosts />}
-          {activeSection === 'reachOut' && <ReachOut />}
+          {activeSection === 'savedPosts' && <SavedPosts loggedInUserEmail={email} />}
+          {activeSection === 'reachOut' && <ReachOut loggedInUserEmail={email} />}
         </div>
-        <div className="flex justify-between mb-4">
+        {/* <div className="flex justify-between mb-4">
           <div>
             Sort By:{' '}
             <select value={sortBy} onChange={(e) => handleSortByChange(e.target.value)}>
@@ -59,7 +59,7 @@ const Profile = ({ avatarUrl, username, email }) => {
               <option value="oldest">Oldest</option>
             </select>
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
