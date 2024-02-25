@@ -32,7 +32,6 @@ const RootComponent = () => {
         setLoggedInEmail(user.email);
         setLoggedInAvatar(user.photoURL);
       } else {
-        alert('First SignIn using Google ')
         setLoggedInUsername(null);
       }
     });
@@ -46,7 +45,7 @@ const RootComponent = () => {
       <Router> 
         <Routes> 
           <Route exact path="/" element={<App />} /> 
-          <Route path="/help" element={<Help />} /> 
+          <Route path="/about" element={<Help />} /> 
           <Route path="/helpline" element={<Helpline />} /> 
           <Route path="/Ngo" element={<Ngo/>} /> 
           <Route path="/complaint" element={<Complaint />} /> 

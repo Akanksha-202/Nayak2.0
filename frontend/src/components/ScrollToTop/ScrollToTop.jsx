@@ -6,7 +6,7 @@ function ScrollToTop() {
 
     // Show button when page is scrolled
     const toggleVisibility = () => {
-        if (window.pageYOffset > 300) {
+        if (window.pageYOffset > 10) {
             setIsVisible(true);
         } else {
             setIsVisible(false);

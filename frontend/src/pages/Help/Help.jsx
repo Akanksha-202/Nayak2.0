@@ -37,6 +37,7 @@ const Help = () => {
                                     className="w-full h-full object-cover rounded-full"
                                 />
                             </div>
+                            <h1 className='font-bold mt-2'>Akanksha Jha</h1>
                             <div className="flex mt-4">
                                 <a href='mailto:jhaakanksha202@gmail.com' className="mr-4"><FaEnvelope className='text-lg' /></a>
                                 <a href="https://github.com/Akanksha-202" className="mr-4"><FaGithub className='text-lg' /></a>
@@ -53,8 +54,9 @@ const Help = () => {
                                     className="w-full h-full object-cover rounded-full"
                                 />
                             </div>
+                            <h1 className='font-bold mt-2'>Nitya Pasrija</h1>
                             <div className="flex mt-4">
-                                <a href='mail to: nitya055btit21@igdtuw.ac.in' className="mr-4"><FaEnvelope className='text-lg' /></a>
+                                <a href='mailto: nitya055btit21@igdtuw.ac.in' className="mr-4"><FaEnvelope className='text-lg' /></a>
                                 <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub className='text-lg' /></a>
                                 <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter className='text-lg' /></a>
                                 <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin className='text-lg' /></a>
@@ -68,8 +70,9 @@ const Help = () => {
                                     className="w-full h-full object-cover rounded-full"
                                 />
                             </div>
+                            <h1 className='font-bold mt-2'>Samiksha Jain</h1>
                             <div className="flex mt-4">
-                                <a href='mail to:samiksha043btit21@igdtuw.ac.in' className="mr-4"><FaEnvelope className='text-lg' /></a>
+                                <a href='mailto:samiksha043btit21@igdtuw.ac.in' className="mr-4"><FaEnvelope className='text-lg' /></a>
                                 <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub className='text-lg' /></a>
                                 <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter className='text-lg' /></a>
                                 <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin className='text-lg' /></a>
@@ -78,16 +81,17 @@ const Help = () => {
                         <div className="flex flex-col items-center">
                             <div className="w-56 h-56 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden">
                                 <img
-                                    src=""
+                                    src="https://res.cloudinary.com/damtnzoo8/image/upload/v1708868511/WhatsApp_Image_2024-02-25_at_19.08.47_808175b6_mswavx.jpg"
                                     alt="Profile Image"
                                     className="w-full h-full object-cover rounded-full"
                                 />
                             </div>
+                            <h1 className='font-bold mt-2'>Vashitva Bagga</h1>
                             <div className="flex mt-4">
-                                <a href='mail to:vashitva' className="mr-4"><FaEnvelope className='text-lg' /></a>
-                                <a href="https://github.com/Nitya-Pasrija" className="mr-4"><FaGithub className='text-lg' /></a>
-                                <a href="https://twitter.com/NityaPasrija" className="mr-4"><FaTwitter className='text-lg' /></a>
-                                <a href="https://www.linkedin.com/in/nitya-pasrija/"><FaLinkedin className='text-lg' /></a>
+                                <a href='mailto:vashitva.bagga@gmail.com' className="mr-4"><FaEnvelope className='text-lg' /></a>
+                                <a href="https://github.com/VashitvaR" className="mr-4"><FaGithub className='text-lg' /></a>
+                                <a href="https://twitter.com/0_vashitva" className="mr-4"><FaTwitter className='text-lg' /></a>
+                                <a href="https://www.linkedin.com/in/vashitva-bagga"><FaLinkedin className='text-lg' /></a>
                             </div>
                         </div>
                         

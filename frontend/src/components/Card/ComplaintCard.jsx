@@ -1,12 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaShare,  FaBookmark,  FaTrash } from 'react-icons/fa';
+import { FaShare, FaBookmark, FaTrash, FaRegBookmark } from 'react-icons/fa';
 import ContactPopup from '../ContactPopup/ContactPopup';
-import { deleteDoc, doc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, where, getDocs, query } from 'firebase/firestore';
 import { db } from '../../firebase/utils';
 
 function ComplaintCard({ complaints, userEmail }) {
   const [showContactPopup, setShowContactPopup] = useState(false); // State to manage modal visibility
+  const [bookmarkedComplaints, setBookmarkedComplaints] = useState({}); // State to manage bookmarked complaints
+
+  useEffect(() => {
+    // Check local storage for bookmarked complaints on component mount
+    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarked')) || {};
+    setBookmarkedComplaints(storedBookmarks);
+  }, []);
+
+  const handleBookmarkClick = async (complaint) => {
+    const updatedBookmarks = { ...bookmarkedComplaints };
+
+    if (!bookmarkedComplaints[complaint.id]) {
+      // Add complaint to bookmarks
+      updatedBookmarks[complaint.id] = true;
+      await addDoc(collection(db, 'saves'), {
+        userId: userEmail,
+        complaintId: complaint.id,
+      });
+    } else {
+      // Remove complaint from bookmarks
+      delete updatedBookmarks[complaint.id];
+      const q = query(collection(db, 'saves'), where('userId', '==', userEmail), where('complaintId', '==', complaint.id));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach(doc => deleteDoc(doc.ref));
+    }
+
+    // Update local storage and state
+    localStorage.setItem('bookmarked', JSON.stringify(updatedBookmarks));
+    setBookmarkedComplaints(updatedBookmarks);
+  };
+
+  // Rest of your component code remains unchanged
+
 
   const handleShare = async (complaintName) => {
     try {
@@ -25,7 +58,7 @@ function ComplaintCard({ complaints, userEmail }) {
         });
       } else {
         console.log('Web Share API not supported');
-        
+
       }
     } catch (error) {
       console.error('Error sharing:', error);
@@ -42,7 +75,7 @@ function ComplaintCard({ complaints, userEmail }) {
     }
   };
 
-  
+
 
   return (
     <div className="flex flex-wrap">
@@ -52,14 +85,16 @@ function ComplaintCard({ complaints, userEmail }) {
             <div>
               <h2 className="text-xl font-semibold text-center mb-2">{complaint.title}</h2>
               <div className="flex items-center justify-end space-x-2">
-               
-                {complaint.userEmail !== userEmail && (<FaBookmark className='cursor-pointer'/>)}
+                {complaint.userEmail !== userEmail && (
+                  <div onClick={() => handleBookmarkClick(complaint)} className='cursor-pointer'>
+                    {bookmarkedComplaints[complaint.id] ? <FaBookmark /> : <FaRegBookmark />}
+                  </div>
+                )}
                 <FaShare
                   className="text-blue-500 cursor-pointer"
                   onClick={() => handleShare(complaint.title)}
                 />
-                {complaint.userEmail === userEmail && (<FaTrash className="text-red-500 cursor-pointer" onClick={()=>handleDelete(complaint.id)}/>)}
-                <span>{complaint.views}</span>
+                {complaint.userEmail === userEmail && (<FaTrash className="text-red-500 cursor-pointer" onClick={() => handleDelete(complaint.id)} />)}
               </div>
               <p className="text-gray-600 mt-4">
                 {complaint.description.length > 100 ? (
@@ -77,18 +112,26 @@ function ComplaintCard({ complaints, userEmail }) {
                 )}
               </p>
             </div>
-            {/* Button to open the ContactPopup modal */}
 
+            {/* Button to open the ContactPopup modal */}
             <button
               onClick={() => setShowContactPopup(true)}
               className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2"
+              disabled={complaint.userEmail === userEmail}
+              style={{ cursor: complaint.userEmail === userEmail ? 'not-allowed' : 'pointer' }}
             >
               Reach Out
             </button>
+              {showContactPopup &&
+                <ContactPopup
+                  onClose={() => setShowContactPopup(false)}
+                  loggedInEmail={userEmail}
+                  complaintEmail={complaint.userEmail}
+                  complaintTitle={complaint.title}
+                />}
           </div>
         </div>
       ))}
-      {showContactPopup && <ContactPopup onClose={() => setShowContactPopup(false)} />}
     </div>
   );
 }

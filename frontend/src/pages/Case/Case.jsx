@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/utils';
 import { FaArrowUp, FaFilePdf } from 'react-icons/fa';
 import Navbar from '../../components/Navbar/Navbar';
 import ScrollToTop from '../../components/ScrollToTop/ScrollToTop';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 
 function Case() {
     const [complaint, setComplaint] = useState(null);
@@ -41,19 +42,22 @@ function Case() {
 
                 <div>
                     {complaint.attachments.map((attachment, index) => (
-                        <div key={index} className="mb-2">
-                            {attachment.endsWith('.pdf') ? (
-                                <a href={attachment} target="_blank" rel="noopener noreferrer">
-                                    <FaFilePdf className="mr-2" /> PDF Attachment
+                        <div key={index} className="mb-2 flex">
+                            {attachment.includes('.pdf?') ? (
+                                <a href={attachment} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                                    <FaFilePdf className="mr-2 text-red-600" /> PDF Attachment
                                 </a>
                             ) : (
-                                <img src={attachment} alt={`Attachment ${index + 1}`} className="flex space-x-4 h-1/2 w-1/2" />
+                                <img src={attachment} alt={`Attachment ${index + 1}`} className="flex space-x-4 h-1/4 w-1/4" />
                             )}
                         </div>
                     ))}
                 </div>
 
-                <ScrollToTop />
+                <div className="flex mt-8">
+                    <Link to='/community-wall' className='flex'><ArrowLeftIcon className="h-6 w-6 mr-2" /><i>Go Back</i></Link>
+                    <ScrollToTop />
+                </div>
             </div>
         </>
     );
