@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShare, FaBookmark, FaTrash, FaRegBookmark } from 'react-icons/fa';
 import ContactPopup from '../ContactPopup/ContactPopup';
-import { addDoc, collection, deleteDoc, doc, where, getDocs, query  } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, where, getDocs, query } from 'firebase/firestore';
 import { db } from '../../firebase/utils';
 
 function ComplaintCard({ complaints, userEmail }) {
@@ -87,9 +87,8 @@ function ComplaintCard({ complaints, userEmail }) {
             <div>
               <h2 className="text-xl font-semibold text-center mb-2">{complaint.title}</h2>
               <div className="flex items-center justify-end space-x-2">
-
                 {complaint.userEmail !== userEmail && (
-                  <div onClick={()=>handleBookmarkClick(complaint)} className='cursor-pointer'>
+                  <div onClick={() => handleBookmarkClick(complaint)} className='cursor-pointer'>
                     {bookmarked ? <FaBookmark /> : <FaRegBookmark />}
                   </div>
                 )}
@@ -98,7 +97,6 @@ function ComplaintCard({ complaints, userEmail }) {
                   onClick={() => handleShare(complaint.title)}
                 />
                 {complaint.userEmail === userEmail && (<FaTrash className="text-red-500 cursor-pointer" onClick={() => handleDelete(complaint.id)} />)}
-                <span>{complaint.views}</span>
               </div>
               <p className="text-gray-600 mt-4">
                 {complaint.description.length > 100 ? (
@@ -126,10 +124,16 @@ function ComplaintCard({ complaints, userEmail }) {
             >
               Reach Out
             </button>
+              {showContactPopup &&
+                <ContactPopup
+                  onClose={() => setShowContactPopup(false)}
+                  loggedInEmail={userEmail}
+                  complaintEmail={complaint.userEmail}
+                  complaintTitle={complaint.title}
+                />}
           </div>
         </div>
       ))}
-      {showContactPopup && <ContactPopup onClose={() => setShowContactPopup(false)} />}
     </div>
   );
 }
