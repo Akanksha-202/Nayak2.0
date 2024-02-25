@@ -13,7 +13,7 @@ const provider = new GoogleAuthProvider();
 
 const navigation = [
   { name: 'Community Wall', href: '/community-wall' },
-  { name: 'Analytics', href: '#' },
+  { name: 'Analytics', href: '/analytics' },
   { name: 'Helpline Nos.', href: '/helpline' },
   { name: 'Ngo', href: '/Ngo' },
   { name: 'AI Chatbot', href: 'https://chatbotaii.streamlit.app/' },

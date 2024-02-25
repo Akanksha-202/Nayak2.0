@@ -14,6 +14,7 @@ import Complaint from './pages/Complaint/Complaint';
 import Profile from './pages/Profile/Profile';
 import Case from './pages/Case/Case';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Analytics from './pages/Analytics/Analytics';
 
 const auth = getAuth();
 
@@ -45,6 +46,7 @@ const RootComponent = () => {
       <Router> 
         <Routes> 
           <Route exact path="/" element={<App />} /> 
+          <Route exact path="/analytics" element={<Analytics />} /> 
           <Route path="/about" element={<Help />} /> 
           <Route path="/helpline" element={<Helpline />} /> 
           <Route path="/Ngo" element={<Ngo/>} /> 
