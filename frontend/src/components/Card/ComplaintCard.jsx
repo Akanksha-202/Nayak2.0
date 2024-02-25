@@ -7,41 +7,39 @@ import { db } from '../../firebase/utils';
 
 function ComplaintCard({ complaints, userEmail }) {
   const [showContactPopup, setShowContactPopup] = useState(false); // State to manage modal visibility
-  const [bookmarked, setBookmarked] = useState(false);
+  const [bookmarkedComplaints, setBookmarkedComplaints] = useState({}); // State to manage bookmarked complaints
 
   useEffect(() => {
-    // Check local storage for bookmarked status on component mount
-    const storedBookmark = localStorage.getItem('bookmarked');
-    if (storedBookmark !== null) {
-      setBookmarked(JSON.parse(storedBookmark));
-    }
+    // Check local storage for bookmarked complaints on component mount
+    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarked')) || {};
+    setBookmarkedComplaints(storedBookmarks);
   }, []);
 
   const handleBookmarkClick = async (complaint) => {
-    const savesRef = collection(db, 'saves'); // Reference to the 'saves' collection
+    const updatedBookmarks = { ...bookmarkedComplaints };
 
-    if (!bookmarked) {
-      //!false=>true->add to saves
-      await addDoc(savesRef, {
+    if (!bookmarkedComplaints[complaint.id]) {
+      // Add complaint to bookmarks
+      updatedBookmarks[complaint.id] = true;
+      await addDoc(collection(db, 'saves'), {
         userId: userEmail,
         complaintId: complaint.id,
       });
-      // Update local storage
-      localStorage.setItem('bookmarked', true);
     } else {
-      // false->remove from saves
-      const q = query(savesRef, where('userId', '==', userEmail), where('complaintId', '==', complaint.id));
+      // Remove complaint from bookmarks
+      delete updatedBookmarks[complaint.id];
+      const q = query(collection(db, 'saves'), where('userId', '==', userEmail), where('complaintId', '==', complaint.id));
       const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        deleteDoc(doc.ref); // Delete each document returned by the query
-      });
-      // Update local storage
-      localStorage.setItem('bookmarked', false);
+      querySnapshot.forEach(doc => deleteDoc(doc.ref));
     }
 
-    // Toggle the bookmarked state
-    setBookmarked(!bookmarked);
+    // Update local storage and state
+    localStorage.setItem('bookmarked', JSON.stringify(updatedBookmarks));
+    setBookmarkedComplaints(updatedBookmarks);
   };
+
+  // Rest of your component code remains unchanged
+
 
   const handleShare = async (complaintName) => {
     try {
@@ -89,7 +87,7 @@ function ComplaintCard({ complaints, userEmail }) {
               <div className="flex items-center justify-end space-x-2">
                 {complaint.userEmail !== userEmail && (
                   <div onClick={() => handleBookmarkClick(complaint)} className='cursor-pointer'>
-                    {bookmarked ? <FaBookmark /> : <FaRegBookmark />}
+                    {bookmarkedComplaints[complaint.id] ? <FaBookmark /> : <FaRegBookmark />}
                   </div>
                 )}
                 <FaShare

@@ -17,7 +17,7 @@ const navigation = [
   { name: 'Helpline Nos.', href: '/helpline' },
   { name: 'Ngo', href: '/Ngo' },
   { name: 'AI Chatbot', href: 'https://chatbotaii.streamlit.app/' },
-  { name: 'Help', href: '/help' },
+  { name: 'About', href: '/about' },
 
 ]
 
@@ -95,6 +95,8 @@ function Navbar() {
                       <a
                         key={item.name}
                         href={item.href}
+                        target={item.name === 'AI Chatbot' ? '_blank' : undefined}
+                        rel={item.name === 'AI Chatbot' ? 'noopener noreferrer' : undefined}
                         className={classNames(
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
