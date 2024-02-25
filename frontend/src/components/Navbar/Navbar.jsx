@@ -49,10 +49,11 @@ function Navbar() {
   };
 
 
+  const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      navigation.navigate('/');
+      navigate('/');
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -196,3 +197,6 @@ function Navbar() {
 }
 
 export default Navbar
+
+
+

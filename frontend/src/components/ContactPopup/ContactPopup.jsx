@@ -1,10 +1,32 @@
 import React from 'react';
+import { db } from '../../firebase/utils';
+import { addDoc, collection } from 'firebase/firestore';
 
-const ContactPopup = ({ onClose }) => {
-  const handleSubmit = (event) => {
+const ContactPopup = ({ onClose, loggedInEmail, complaintEmail, complaintTitle }) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission here
-    // You can add your logic to submit the form data
+
+    try {
+      const form = event.target;
+      const formData = new FormData(form);
+      const emailContact = formData.get('email');
+      const message = formData.get('message');
+
+      // Store the data in the 'reach' collection
+      const reachRef = collection(db, 'reach');
+      await addDoc(reachRef, {
+        from: loggedInEmail,
+        to: complaintEmail,
+        complaintTitle: complaintTitle,
+        emailContact,
+        message
+      });
+
+      // Close the modal
+      onClose();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
@@ -32,7 +54,7 @@ const ContactPopup = ({ onClose }) => {
                           id="email"
                           autoComplete="email"
                           className="mt-1 p-2.5 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-[27rem] shadow-sm sm:text-sm border-gray-300 rounded-md"
-                          placeholder="abc@gmail.com"
+                          placeholder="Enter the email id of the concered person/authority"
                           required
                         />
                       </div>
