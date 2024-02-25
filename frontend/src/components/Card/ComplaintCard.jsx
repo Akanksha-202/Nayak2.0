@@ -1,12 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaShare,  FaBookmark,  FaTrash } from 'react-icons/fa';
+import { FaShare, FaBookmark, FaTrash, FaRegBookmark } from 'react-icons/fa';
 import ContactPopup from '../ContactPopup/ContactPopup';
-import { deleteDoc, doc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, where, getDocs, query  } from 'firebase/firestore';
 import { db } from '../../firebase/utils';
 
 function ComplaintCard({ complaints, userEmail }) {
   const [showContactPopup, setShowContactPopup] = useState(false); // State to manage modal visibility
+  const [bookmarked, setBookmarked] = useState(false);
+
+  useEffect(() => {
+    // Check local storage for bookmarked status on component mount
+    const storedBookmark = localStorage.getItem('bookmarked');
+    if (storedBookmark !== null) {
+      setBookmarked(JSON.parse(storedBookmark));
+    }
+  }, []);
+
+  const handleBookmarkClick = async (complaint) => {
+    const savesRef = collection(db, 'saves'); // Reference to the 'saves' collection
+
+    if (!bookmarked) {
+      //!false=>true->add to saves
+      await addDoc(savesRef, {
+        userId: userEmail,
+        complaintId: complaint.id,
+      });
+      // Update local storage
+      localStorage.setItem('bookmarked', true);
+    } else {
+      // false->remove from saves
+      const q = query(savesRef, where('userId', '==', userEmail), where('complaintId', '==', complaint.id));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        deleteDoc(doc.ref); // Delete each document returned by the query
+      });
+      // Update local storage
+      localStorage.setItem('bookmarked', false);
+    }
+
+    // Toggle the bookmarked state
+    setBookmarked(!bookmarked);
+  };
 
   const handleShare = async (complaintName) => {
     try {
@@ -25,7 +60,7 @@ function ComplaintCard({ complaints, userEmail }) {
         });
       } else {
         console.log('Web Share API not supported');
-        
+
       }
     } catch (error) {
       console.error('Error sharing:', error);
@@ -42,7 +77,7 @@ function ComplaintCard({ complaints, userEmail }) {
     }
   };
 
-  
+
 
   return (
     <div className="flex flex-wrap">
@@ -52,13 +87,17 @@ function ComplaintCard({ complaints, userEmail }) {
             <div>
               <h2 className="text-xl font-semibold text-center mb-2">{complaint.title}</h2>
               <div className="flex items-center justify-end space-x-2">
-               
-                {complaint.userEmail !== userEmail && (<FaBookmark className='cursor-pointer'/>)}
+
+                {complaint.userEmail !== userEmail && (
+                  <div onClick={()=>handleBookmarkClick(complaint)} className='cursor-pointer'>
+                    {bookmarked ? <FaBookmark /> : <FaRegBookmark />}
+                  </div>
+                )}
                 <FaShare
                   className="text-blue-500 cursor-pointer"
                   onClick={() => handleShare(complaint.title)}
                 />
-                {complaint.userEmail === userEmail && (<FaTrash className="text-red-500 cursor-pointer" onClick={()=>handleDelete(complaint.id)}/>)}
+                {complaint.userEmail === userEmail && (<FaTrash className="text-red-500 cursor-pointer" onClick={() => handleDelete(complaint.id)} />)}
                 <span>{complaint.views}</span>
               </div>
               <p className="text-gray-600 mt-4">
@@ -77,11 +116,13 @@ function ComplaintCard({ complaints, userEmail }) {
                 )}
               </p>
             </div>
-            {/* Button to open the ContactPopup modal */}
 
+            {/* Button to open the ContactPopup modal */}
             <button
               onClick={() => setShowContactPopup(true)}
               className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2"
+              disabled={complaint.userEmail === userEmail}
+              style={{ cursor: complaint.userEmail === userEmail ? 'not-allowed' : 'pointer' }}
             >
               Reach Out
             </button>
